@@ -1,8 +1,3 @@
-checca
-finocchio
-frocio
-froscio
-recchione
-ricchione
-terrone
-negro
+banned
+words
+here
