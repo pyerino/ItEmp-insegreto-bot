@@ -136,7 +136,7 @@ async def on_message(msg):
         if msg.content.startswith('.anon') or msg.content.startswith('/anon'):
             try:
                 gender = msg.content.split(" ")[1].lower()
-                if gender != 'm' and gender != 'f':
+                if gender != 'm' and gender != 'f' and gender != 'i':
                     raise Exception("Genere non valido!")
             except:
                 await msg.channel.send(":x: **Genere non valido!**")
