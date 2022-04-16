@@ -9,6 +9,8 @@ import discord
 from dotenv import load_dotenv
 from discord_slash import SlashCommand, SlashContext
 from discord_slash.utils.manage_commands import create_choice, create_option
+import time
+
 
 load_dotenv()
 token = os.getenv('TOKEN')
@@ -17,13 +19,11 @@ bot = commands.Bot(command_prefix="/")
 slash = SlashCommand(bot, sync_commands=True)
 print("Connecting to", server_name + "...")
 guilds = []
-for server in bot.guilds:
-    guilds.append(server.id)
 
 
 @slash.slash(
     name="anon",
-    description="/anon <genere> <età> <messaggio> per inviare un messaggio anonimo!",
+    description="/anon <genere> <età> <messaggio> per inviare un messaggio anonimo.",
     guild_ids=guilds,
     options=[
         create_option(
@@ -121,12 +121,14 @@ async def _anon(ctx: SlashContext, genere: str, age: int, messaggio: str):
 
 @bot.event
 async def on_ready():
+    for server in bot.guilds:
+        print(server.name, server.id)
+        guilds.append(server.id)
     print(f'{bot.user} connected!')
 
 
 @bot.event
 async def on_message(msg):
-
     if msg.author == bot.user:
         return
 
