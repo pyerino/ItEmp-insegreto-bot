@@ -28,6 +28,7 @@ Install the dependencies and start the Bot.
 ```sh
 pip install -U discord.py
 pip install -U python-dotenv
+pip install discord-py-slash-command
 ```
 
 Create a file called **.env** in the same directory of *main*.py file:

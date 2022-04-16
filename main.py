@@ -21,10 +21,18 @@ print("Connecting to", server_name + "...")
 guilds = []
 
 
+@bot.event
+async def on_ready():
+    for server in bot.guilds:
+        print(server.name, server.id)
+        guilds.append(server.id)
+    print(f'{bot.user} connected!')
+
+
 @slash.slash(
     name="anon",
-    description="/anon <genere> <età> <messaggio> per inviare un messaggio anonimo.",
-    guild_ids=guilds,
+    description="/anon <genere> <età> <messaggio> per inviare un messaggio anonimo!",
+    guild_ids=[389094224106225674],
     options=[
         create_option(
             name="genere",
@@ -120,14 +128,6 @@ async def _anon(ctx: SlashContext, genere: str, age: int, messaggio: str):
 
 
 @bot.event
-async def on_ready():
-    for server in bot.guilds:
-        print(server.name, server.id)
-        guilds.append(server.id)
-    print(f'{bot.user} connected!')
-
-
-@bot.event
 async def on_message(msg):
     if msg.author == bot.user:
         return
@@ -184,7 +184,7 @@ async def on_message(msg):
                 genere = "Ragazzo 👨"
             elif gender == 'f':
                 genere = "Ragazza 👧"
-            elif genere == 'i':
+            elif gender == 'i':
                 genere = "Indefinito 👌"
 
             target_channel = msg.channel
