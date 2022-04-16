@@ -39,6 +39,6 @@ TARGET_CHANNEL=
 ```
 
 
-> To start to bot, type: `python main.py` into the console.
+> To launch the bot, type: `python main.py` into the console.
 
 ---
